@@ -11,23 +11,12 @@ export class AppComponent {
   imageFile: any | File;
   imageLink: any;
 
-  constructor(
-    private _formBuilder: FormBuilder,
-  ) {
+  constructor(private _formBuilder: FormBuilder) { }
 
-  }
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       logo_file: new FormControl(''),
     })
-  }
-  submit() {
-    if (this.form.valid) {
-      const data: any = {
-        image_file: this.imageFile
-      }
-      console.log(data);
-    }
   }
 
   onImageChange(event: any) {

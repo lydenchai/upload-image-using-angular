@@ -1,16 +1,15 @@
 <router-outlet></router-outlet>
-<div class="uplaod-img">
-  <!-- Input image -->
-  <input type="file" hidden #logo accept="image/*" (change)="onImageChange($event)" />
-
-  <!--  -->
-  <div class="img-box" (click)="logo.click()">
-    <img *ngIf="imageLink === undefined" class="mb-3" src="assets/imgs/upload.svg" alt="" />
-    <div *ngIf="!imageLink">
-      Upload Image
-    </div>
-    <!-- Preview image -->
-    <div *ngIf="imageLink != undefined " class="img" [ngStyle]="{'background-image': 'url(' + imageLink + ')'}">
+<div class="container">
+  <div class="upload-img">
+    <input type="file" hidden #logo accept="image/*" (change)="onImageChange($event)" />
+    <div class="img-box" (click)="logo.click()">
+      <img *ngIf="imageLink === undefined" class="mb-3" src="assets/imgs/upload.svg" alt="" />
+      <div *ngIf="!imageLink" class="btn-upload">
+        <mat-icon>add_a_photo</mat-icon>
+        <span>Upload Image</span>
+      </div>
+      <div *ngIf="imageLink != undefined " class="img" [ngStyle]="{'background-image': 'url(' + imageLink + ')'}">
+      </div>
     </div>
   </div>
 </div>
