@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +6,12 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  form: FormGroup | any;
-  imageFile: any | File;
+  imageFile: File | any;
   imageLink: any;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      logo_file: new FormControl(''),
-    })
-  }
+  ngOnInit(): void { }
 
   onImageChange(event: any) {
     if (event.target.value.length !== 0) {
@@ -28,7 +22,9 @@ export class AppComponent {
       reader.onload = function () {
         context.imageLink = reader.result;
       };
-      reader.onerror = function (error) { };
+      reader.onerror = function (error) {
+        console.log('error', error);
+      };
     }
   }
 }
